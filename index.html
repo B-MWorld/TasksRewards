@@ -477,6 +477,28 @@ function dataURItoBlob(dataURI) {
     return new Blob([ab], { type: mimeString });
 }
 
+
+
+
+
+
+        // Handle network errors
+window.onerror = function(message, source, lineno, colno, error) {
+    const errorMessageDiv = document.getElementById('error-message');
+    errorMessageDiv.style.display = 'block';
+    console.log('Custom Error:', message);
+    return true; // Prevent the default browser error handling
+};
+
+// Ensure full height of the webpage
+document.addEventListener('DOMContentLoaded', () => {
+    function setFullHeight() {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    setFullHeight();
+    window.addEventListener('resize', setFullHeight);
+});
+
     </script>
 </body>
 </html>
