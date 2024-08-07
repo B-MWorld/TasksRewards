@@ -1,3 +1,5 @@
+
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -340,15 +342,15 @@ html, body {
               <li>  <a href="http://t.me/TasksRewards_bot/Claim" target="_blank">Claim</a> </li>
 
               <!--  <li><a href="#claim" onclick="loadPage('claim')">Claim</a></li> -->
-            </ul>
+           <!-- </ul>
         </nav>
     </header>
     <main id="main-content">
         <!-- Content will be loaded here -->
-    </main>
+    <!--</main>
     <footer>
         <!-- Decorative footer -->
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+      <!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -553,3 +555,413 @@ document.addEventListener('DOMContentLoaded', () => {
     </script>
 </body>
 </html>
+
+-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airtime Plus Data Rewards</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: gold;
+        }
+
+        input, select, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid gold;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        button {
+            background-color: gold;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: darkgoldenrod;
+        }
+
+        #result img {
+            max-width: 100%;
+            margin: 10px 0;
+            background-color: gold;
+        }
+
+        header, footer {
+            background-color: #000;
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid gold;
+            border-bottom: 2px solid gold;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 8px #ffd700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+            padding: 0;
+            color: white;
+        }
+
+        nav ul li {
+            margin: 0px 0px;
+        }
+
+        nav ul li a {
+            color: gold;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            width: 100%;
+        }
+
+        .highlight-box-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            margin: 50px 50px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffd700, #ffcc00);
+            color: #000;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.7);
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .tasks, .claim {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid gold;
+            border-radius: 10px;
+            max-width: 800px;
+            background-color: #111;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .instructions {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid gold;
+            border-radius: 10px;
+            max-width: 800px;
+            background-color: #111;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .instructions ol {
+            margin: 0;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .instructions ol li::before {
+            content: "✔ ";
+            color: gold;
+            margin-right: 5px;
+        }
+
+        .instructions h2 {
+            color: gold;
+            text-shadow: 1px 1px 5px #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+
+        .tasks ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tasks li {
+            margin-bottom: 20px;
+        }
+
+        .tasks li.disabled h3, .tasks li.disabled p {
+            color: gray;
+        }
+
+        .task-button {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: gold;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .task-button:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: gold;
+        }
+
+        #claim-summary img {
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            margin: 10px auto;
+        }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            color: gold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Error Message */
+        #error-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: black;
+            color: red;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #refresh-btn {
+            background-color: gold;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #refresh-btn:hover {
+            background-color: darkgoldenrod;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul li {
+                margin-top: 35px 0;
+            }
+
+            main, .tasks, .claim, .instructions {
+                margin: 10px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            nav ul li {
+                margin-top: 35px 0;
+            }
+
+            main, .tasks, .claim, .instructions {
+                margin: 5px;
+                padding: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-screen">Loading...</div>
+    <div id="error-message">
+        Network issue or offline. Please try again.
+        <button id="refresh-btn" onclick="location.reload();">Refresh</button>
+    </div>
+    <header>
+        <h1>Welcome to the Reward Platform</h1>
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="loadPage('home')">Home</a></li>
+                <li><a href="#tasks" onclick="loadPage('tasks')">Tasks</a></li>
+                <li><a href="http://t.me/TasksRewards_bot/Claim" target="_blank">Claim</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-content">
+        <!-- Content will be loaded here -->
+    </main>
+    <footer></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPage('home');
+        });
+
+        function loadPage(page) {
+            const mainContent = document.getElementById('main-content');
+            switch (page) {
+                case 'home':
+                    mainContent.innerHTML = `
+                        <section class="intro">
+                            <div class="highlight-box-container"> 
+                                <div class="highlight-box">Airtime + Data</div>
+                            </div>
+                            <div class="instructions">
+                                <h2>How It Works:</h2>
+                                <ol>
+                                    <li>Complete the given tasks.</li>
+                                    <li>Earn airtime and data as rewards.</li>
+                                    <li>Claim your rewards easily.</li>
+                                </ol>
+                            </div>
+                        </section>
+                    `;
+                    break;
+                case 'tasks':
+                    mainContent.innerHTML = `
+                        <section class="tasks">
+                            <h2>Available Tasks</h2>
+                            <ul>
+                                <li>
+                                    <h3>Task 1: Watch a video</h3>
+                                    <p>Watch the video on our YouTube channel and earn rewards.</p>
+                                    <button class="task-button" onclick="completeTask(1)">Complete Task</button>
+                                </li>
+                                <li>
+                                    <h3>Task 2: Share a post</h3>
+                                    <p>Share our post on social media to earn rewards.</p>
+                                    <button class="task-button" onclick="completeTask(2)">Complete Task</button>
+                                </li>
+                                <li class="disabled">
+                                    <h3>Task 3: Complete a survey</h3>
+                                    <p>This task is currently unavailable.</p>
+                                    <button class="task-button" disabled>Complete Task</button>
+                                </li>
+                            </ul>
+                        </section>
+                    `;
+                    break;
+                default:
+                    mainContent.innerHTML = '<h2>Page not found</h2>';
+                    break;
+            }
+        }
+
+        function completeTask(taskId) {
+            alert('Task ' + taskId + ' completed! Your reward will be credited soon.');
+        }
+
+        // Hide loading screen after loading content
+        window.addEventListener('load', () => {
+            document.getElementById('loading-screen').style.display = 'none';
+        });
+
+        // Check network status
+        function updateNetworkStatus() {
+            if (!navigator.onLine) {
+                document.getElementById('error-message').style.display = 'block';
+            } else {
+                document.getElementById('error-message').style.display = 'none';
+            }
+        }
+
+        window.addEventListener('offline', updateNetworkStatus);
+        window.addEventListener('online', updateNetworkStatus);
+        updateNetworkStatus();
+    </script>
+</body>
+</html>
+
+
